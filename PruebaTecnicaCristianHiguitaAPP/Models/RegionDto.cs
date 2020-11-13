@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace PruebaTecnicaCristianHiguitaAPP.Models
 {
-    public class ModeloPrueba
+    public class RegionDto
     {
-        public int id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public int IdRegion { get; set; }
+        public string NombreRegion { get; set; }
     }
 }

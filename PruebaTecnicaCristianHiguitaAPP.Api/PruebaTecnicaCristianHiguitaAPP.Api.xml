@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PruebaTecnicaCristianHiguitaAPP.Api</name>
+    </assembly>
+    <members>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.MunicipioController.Update(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.MunicipioDto)">
+            <summary>
+            
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.NewRegion(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.RegionDto)">
+            <summary>
+            
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -28,12 +28,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Controllers
             return View();
         }
 
-        public IActionResult Prueba()
-        {
-            ModeloPrueba modeloPrueba = new ModeloPrueba();
-            return View(modeloPrueba);
-        }
-
+       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
