@@ -24,5 +24,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.Update(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.RegionDto)">
+            <summary>
+            
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

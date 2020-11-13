@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Delete;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Search;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Cross.Cls;
 using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
 using PruebaTecnicaCristianHiguitaAPP.Cross.Exception_;
@@ -21,11 +22,14 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
         private readonly INewRegionAplication _newRegionAplication;
         private readonly IDeleteRegionAplication _deleteRegionAplication;
         private readonly ISearchRegionAplication _searchRegionAplication;
-        public RegionController(INewRegionAplication newRegionAplication, IDeleteRegionAplication deleteRegionAplication, ISearchRegionAplication searchRegionAplication)
+        private readonly IUpdateRegionAplication _updateRegionAplication;
+        public RegionController(INewRegionAplication newRegionAplication, IDeleteRegionAplication deleteRegionAplication, 
+            ISearchRegionAplication searchRegionAplication, IUpdateRegionAplication updateRegionAplication)
         {
             _newRegionAplication = newRegionAplication;
             _deleteRegionAplication = deleteRegionAplication;
             _searchRegionAplication = searchRegionAplication;
+            _updateRegionAplication = updateRegionAplication;
         }
         /// <summary>
         /// 
@@ -105,6 +109,37 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status200OK, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
             }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Request"></param>
+        /// <returns></returns>
+        [HttpPut("Update")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(504)]
+        public IActionResult Update([FromBody] RegionDto Request)
+        {
+
+            try
+            {
+                var _resultado = _updateRegionAplication.execute(Request);
+                return StatusCode(StatusCodes.Status200OK, _resultado);
+            }
+            catch (TecnicalException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
+            }
+
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);

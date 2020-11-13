@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="MunicipioDomain\Search\" />
     <Folder Include="MunicipioDomain\New\" />
-    <Folder Include="RegionDomain\Update\" />
   </ItemGroup>
 
   <ItemGroup>

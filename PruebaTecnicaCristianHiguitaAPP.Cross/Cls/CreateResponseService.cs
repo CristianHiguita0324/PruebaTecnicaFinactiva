@@ -7,7 +7,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Cross.Cls
 {
     public static class CreateResponseService
     {
-        public static ResponseService execute(string code, string description, string AdditionalInformation)
+        public static ResponseService execute(string code, string description, object AdditionalInformation)
         {
             ResponseService response = new ResponseService();
 

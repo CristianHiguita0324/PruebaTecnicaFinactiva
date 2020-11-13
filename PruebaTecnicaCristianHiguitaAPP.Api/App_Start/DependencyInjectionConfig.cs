@@ -5,6 +5,7 @@ using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Delete;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Search;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Data.Models;
 using PruebaTecnicaCristianHiguitaAPP.Data.UnitOfWork;
 using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Delete;
@@ -12,6 +13,7 @@ using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Update;
 using PruebaTecnicaCristianHiguitaAPP.Domain.Region.Delete;
 using PruebaTecnicaCristianHiguitaAPP.Domain.Region.New;
 using PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Search;
+using PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +43,8 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.App_Start
             services.AddScoped<IUpdatemunicipioAplication, UpdatemunicipioAplication>();
             services.AddScoped<IDeleteMunicipioDomain, DeleteMunicipioDomain>();
             services.AddScoped<IDeleteMunicipioAplication, DeleteMunicipioAplication>();
+            services.AddScoped<IUpdateRegionAplication, UpdateRegionAplication>();
+            services.AddScoped<IUpdateRegionDomain, UpdateRegionDomain>();
         }
     }
 }

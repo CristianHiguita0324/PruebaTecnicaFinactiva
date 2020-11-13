@@ -5,17 +5,13 @@ using System.Text;
 
 namespace PruebaTecnicaCristianHiguitaAPP.Cross.Entities
 {
-   public class MunicipioDto
+   public class MunicipioRegion
     {
+        [Required]
         public int IdMunicipio { get; set; }
-
         [Required]
-        [StringLength(60)]
-        public string NombreMunicipio { get; set; }
-
-        [Required]
-        public bool Estado { get; set; }
-
-        
+        [StringLength(1)]
+        [RegularExpression("([0-1]+)")]
+        public string EliminaAgrega { get; set; }
     }
 }
