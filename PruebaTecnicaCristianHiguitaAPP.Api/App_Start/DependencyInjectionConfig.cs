@@ -31,7 +31,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.App_Start
         public static void Register(IServiceCollection services)
         {
 
-            string cadenaConexion = "Server=PSOFKA0319\\SQLEXPRESS;Database=RegionesBD2;Trusted_Connection=True;";
+            string cadenaConexion = "Server=tcp:cristianhiguitafinactiva.database.windows.net,1433;Initial Catalog=RegionesBD;Persist Security Info=False;User ID=finactiva;Password=PruebaTecnica2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 
 
