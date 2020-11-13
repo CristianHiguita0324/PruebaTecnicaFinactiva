@@ -13,7 +13,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Update
         {
             _updateRegionDomain = updateRegionDomain;
         }
-        public ResponseService execute(RegionDto regionDto)
+        public ResponseService execute(RegionDetails regionDto)
         {
             return _updateRegionDomain.execute(regionDto);
         }

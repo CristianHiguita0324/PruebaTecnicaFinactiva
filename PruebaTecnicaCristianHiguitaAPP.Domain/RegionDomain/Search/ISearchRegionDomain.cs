@@ -7,6 +7,8 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Search
 {
    public interface ISearchRegionDomain
     {
-        RegionDto execute();
+        List<RegionDto> GetAll();
+
+        RegionDetailsMunicipio GetID(int id);
     }
 }

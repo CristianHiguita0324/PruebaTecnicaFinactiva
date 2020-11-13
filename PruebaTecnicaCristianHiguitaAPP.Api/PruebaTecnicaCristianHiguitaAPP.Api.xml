@@ -4,11 +4,30 @@
         <name>PruebaTecnicaCristianHiguitaAPP.Api</name>
     </assembly>
     <members>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.MunicipioController.NewMunicipio(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.MunicipioDto)">
+            <summary>
+            
+            </summary>
+            <param name="Request"></param>
+            <returns></returns>
+        </member>
         <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.MunicipioController.Update(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.MunicipioDto)">
             <summary>
             
             </summary>
             <param name="Request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.MunicipioController.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.MunicipioController.Get(System.Int32)">
+            <summary>
+            
+            </summary>
             <returns></returns>
         </member>
         <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.NewRegion(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.RegionDto)">
@@ -24,7 +43,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.Update(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.RegionDto)">
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.Get(System.Int32)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PruebaTecnicaCristianHiguitaAPP.Api.Controllers.RegionController.Update(PruebaTecnicaCristianHiguitaAPP.Cross.Entities.RegionDetails)">
             <summary>
             
             </summary>

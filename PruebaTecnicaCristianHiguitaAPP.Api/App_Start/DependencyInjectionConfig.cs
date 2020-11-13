@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Delete;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.New;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Search;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Delete;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New;
@@ -9,6 +11,8 @@ using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Data.Models;
 using PruebaTecnicaCristianHiguitaAPP.Data.UnitOfWork;
 using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Delete;
+using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.New;
+using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Search;
 using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Update;
 using PruebaTecnicaCristianHiguitaAPP.Domain.Region.Delete;
 using PruebaTecnicaCristianHiguitaAPP.Domain.Region.New;
@@ -27,7 +31,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.App_Start
         public static void Register(IServiceCollection services)
         {
 
-            string cadenaConexion = "Server=PSOFKA0319\\SQLEXPRESS;Database=RegionesBD;Trusted_Connection=True;";
+            string cadenaConexion = "Server=PSOFKA0319\\SQLEXPRESS;Database=RegionesBD2;Trusted_Connection=True;";
 
 
 
@@ -45,6 +49,10 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.App_Start
             services.AddScoped<IDeleteMunicipioAplication, DeleteMunicipioAplication>();
             services.AddScoped<IUpdateRegionAplication, UpdateRegionAplication>();
             services.AddScoped<IUpdateRegionDomain, UpdateRegionDomain>();
+            services.AddScoped<INewMunicipioAplication, NewMunicipioAplication>();
+            services.AddScoped<INewMunicipioDomain, NewMunicipioDomain>();
+            services.AddScoped<ISearchMunicipioAplication, SearchMunicipioAplication>();
+            services.AddScoped<ISearchMunicipioDomain, SearchMunicipioDomain>();
         }
     }
 }

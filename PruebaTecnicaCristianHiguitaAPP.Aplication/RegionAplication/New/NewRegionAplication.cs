@@ -1,4 +1,5 @@
-﻿using PruebaTecnicaCristianHiguitaAPP.Domain.Region.New;
+﻿using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
+using PruebaTecnicaCristianHiguitaAPP.Domain.Region.New;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New
         {
             _newRegion = newRegion;
         }
-        public string execute(string request)
+        public ResponseService execute(string request)
         {
             return _newRegion.execute(request);
         }

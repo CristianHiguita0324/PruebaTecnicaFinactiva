@@ -1,4 +1,5 @@
-﻿using PruebaTecnicaCristianHiguitaAPP.Domain.Region.Delete;
+﻿using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
+using PruebaTecnicaCristianHiguitaAPP.Domain.Region.Delete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Delete
         {
             _deleteRegion = deleteRegion;
         }
-        public bool execute(int Idregion)
+        public ResponseService execute(int Idregion)
         {
            return _deleteRegion.execute(Idregion);
         }

@@ -7,6 +7,6 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
 {
    public  interface IUpdateRegionDomain
     {
-        ResponseService execute(RegionDto regionDto);
+        ResponseService execute(RegionDetails regionDto);
     }
 }

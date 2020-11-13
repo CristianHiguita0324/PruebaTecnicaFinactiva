@@ -13,12 +13,14 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDeleteMunicipioDomain _deleteMunicipioDomain;
+       
         public UpdateRegionDomain(IUnitOfWork unitOfWork, IDeleteMunicipioDomain deleteMunicipioDomain)
         {
             _unitOfWork = unitOfWork;
             _deleteMunicipioDomain = deleteMunicipioDomain;
+          
         }
-        public ResponseService execute(RegionDto regionDto)
+        public ResponseService execute(RegionDetails regionDto)
         {
             _unitOfWork.RegionRepository.Update(createEntity(regionDto));
             _unitOfWork.Save();
@@ -28,7 +30,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
                return UpdateMunicipios(regionDto.Municipios, regionDto.IdRegion);
             }
             else
-                return CreateResponseService.execute("200",  "Actualizaron exitosa", new RegionDto());
+                return CreateResponseService.execute(Constant.CODIGO_EXITO, Constant.TRANSACCION_EXITOSA, null);
 
 
         }
@@ -61,7 +63,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
                 }
             }
 
-            return CreateResponseService.execute("200", check ? "Uno o mas municipios no se asociaron por que estan en estado inactivo": "Actualizaron exitosa", new RegionDto());
+            return CreateResponseService.execute(Constant.CODIGO_EXITO, check ? Constant.MUNICIPIO_iNACTIVO: Constant.TRANSACCION_EXITOSA, new RegionDto());
 
 
         }

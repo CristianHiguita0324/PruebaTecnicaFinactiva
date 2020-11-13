@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using PruebaTecnicaCristianHiguitaAPP.Cross.Cls;
+using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
 using PruebaTecnicaCristianHiguitaAPP.Data.Models;
 using PruebaTecnicaCristianHiguitaAPP.Data.UnitOfWork;
 using System;
@@ -14,7 +16,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.Region.New
         {
             _unitOfWork = unitOfWork;
         }
-        public string execute(string request)
+        public ResponseService execute(string request)
         {
 
             TblRegion region = new TblRegion()
@@ -24,7 +26,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.Region.New
             _unitOfWork.RegionRepository.Insert(region);
             _unitOfWork.Save();
 
-            return "Ok";
+            return CreateResponseService.execute(Constant.CODIGO_EXITO, Constant.TRANSACCION_EXITOSA, null);
         }
     }
 }

@@ -14,10 +14,15 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.Search
         {
             _searchRegionDomain = searchRegionDomain;
         }
-        public RegionDto execute()
+
+        public List<RegionDto> GetAll()
         {
-            return _searchRegionDomain.execute();
-            
+           return _searchRegionDomain.GetAll();
+        }
+
+        public RegionDetailsMunicipio GetId(int id)
+        {
+            return _searchRegionDomain.GetID(id);
         }
     }
 }

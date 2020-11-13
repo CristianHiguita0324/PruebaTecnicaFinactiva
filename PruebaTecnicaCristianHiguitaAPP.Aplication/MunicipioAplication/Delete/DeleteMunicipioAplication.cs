@@ -1,4 +1,5 @@
-﻿using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Delete;
+﻿using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
+using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Delete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Delete
         {
             _deleteMunicipioDomain = deleteMunicipioDomain;
         }
-        public bool execute(int id)
+        public ResponseService execute(int id)
         {
             return _deleteMunicipioDomain.execute(id);
         }

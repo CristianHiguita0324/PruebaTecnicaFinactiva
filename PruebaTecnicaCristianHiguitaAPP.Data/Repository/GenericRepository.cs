@@ -23,12 +23,20 @@ namespace PruebaTecnicaCristianHiguitaAPP.Data.Repository
 
         public async Task<List<TEntity>> Get(Expression<Func<TEntity, bool>> getBy, params Expression<Func<TEntity, object>>[] includes)
         {
-            var result = _contexto.Set<TEntity>().Where(getBy);
+            try
+            {
+                var result = _contexto.Set<TEntity>().Where(getBy);
 
-            foreach (var expression in includes)
-                result = result.Include(expression);
+                foreach (var expression in includes)
+                    result = result.Include(expression);
 
-            return await result.ToListAsync();
+                return await result.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
+            }
+            
         }
 
         public virtual IEnumerable<TEntity> Get(
@@ -36,27 +44,35 @@ namespace PruebaTecnicaCristianHiguitaAPP.Data.Repository
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-
-            IQueryable<TEntity> query = dbSet;
-
-            if (filter != null)
+            try
             {
-                query = query.Where(filter);
+                IQueryable<TEntity> query = dbSet;
+
+                if (filter != null)
+                {
+                    query = query.Where(filter);
+                }
+
+                foreach (var propiedad in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(propiedad);
+                }
+
+                if (orderBy != null)
+                {
+                    return orderBy(query).ToList();
+                }
+                else
+                {
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
             }
 
-            foreach (var propiedad in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(propiedad);
-            }
 
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
         }
         public virtual IEnumerable<TEntity> GetAll()
         {
@@ -99,31 +115,63 @@ namespace PruebaTecnicaCristianHiguitaAPP.Data.Repository
 
         public virtual void AddRange(List<TEntity> entity)
         {
-            dbSet.AddRange(entity);
+            try
+            {
+                dbSet.AddRange(entity);
+            }
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
+            }
+            
         }
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = dbSet.Find(id);
-            Delete(entityToDelete);
+            try
+            {
+                TEntity entityToDelete = dbSet.Find(id);
+                Delete(entityToDelete);
+            }
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
+            }
+           
         }
 
         public virtual void Delete(TEntity entityToDelete)
         {
-            if (_contexto.Entry(entityToDelete).State == EntityState.Detached)
+            try
             {
-                dbSet.Attach(entityToDelete);
+                if (_contexto.Entry(entityToDelete).State == EntityState.Detached)
+                {
+                    dbSet.Attach(entityToDelete);
+                }
+                dbSet.Remove(entityToDelete);
             }
-            dbSet.Remove(entityToDelete);
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
+            }
+         
         }
 
         public virtual void Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            IQueryable<TEntity> query = dbSet.Where(predicate).AsQueryable();
-            foreach (TEntity obj in query)
+            try
             {
-                dbSet.Remove(obj);
+                IQueryable<TEntity> query = dbSet.Where(predicate).AsQueryable();
+                foreach (TEntity obj in query)
+                {
+                    dbSet.Remove(obj);
+                }
             }
+            catch (Exception ex)
+            {
+                throw new TecnicalException(ex.Message);
+            }
+
         }
 
         public virtual void Update(TEntity entityToUpdate)

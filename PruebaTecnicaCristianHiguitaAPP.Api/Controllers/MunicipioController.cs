@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Delete;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.New;
+using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Search;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.MunicipioAplication.Update;
 using PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New;
 using PruebaTecnicaCristianHiguitaAPP.Cross.Cls;
@@ -21,10 +23,45 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
     {
         private readonly IUpdatemunicipioAplication _updatemunicipioAplication;
         private readonly IDeleteMunicipioAplication _deleteMunicipioAplication;
-        public MunicipioController(IUpdatemunicipioAplication updatemunicipioAplication, IDeleteMunicipioAplication deleteMunicipioAplication)
+        private readonly INewMunicipioAplication _newMunicipioAplication;
+        private readonly ISearchMunicipioAplication _searchMunicipioAplication;
+        public MunicipioController(IUpdatemunicipioAplication updatemunicipioAplication, IDeleteMunicipioAplication deleteMunicipioAplication, 
+                                   INewMunicipioAplication newMunicipioAplication, ISearchMunicipioAplication searchMunicipioAplication)
         {
             _updatemunicipioAplication = updatemunicipioAplication;
             _deleteMunicipioAplication = deleteMunicipioAplication;
+            _newMunicipioAplication = newMunicipioAplication;
+            _searchMunicipioAplication = searchMunicipioAplication;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Request"></param>
+        /// <returns></returns>
+        [HttpPost("NewMunicipio")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(504)]
+        public IActionResult NewMunicipio([FromBody] MunicipioDto Request)
+        {
+
+            try
+            {
+                var _resultado = _newMunicipioAplication.execute(Request);
+                return StatusCode(StatusCodes.Status200OK, _resultado);
+            }
+            catch (TecnicalException ex)
+            {
+                return StatusCode(StatusCodes.Status204NoContent, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
         /// <summary>
         /// 
@@ -71,6 +108,64 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
             try
             {
                 var _resultado = _deleteMunicipioAplication.execute(id);
+                return StatusCode(StatusCodes.Status200OK, _resultado);
+            }
+            catch (TecnicalException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAll")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(504)]
+        public IActionResult GetAll()
+        {
+
+            try
+            {
+                var _resultado = _searchMunicipioAplication.GetAll();
+                return StatusCode(StatusCodes.Status200OK, _resultado);
+            }
+            catch (TecnicalException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Get")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(504)]
+        public IActionResult Get(int id)
+        {
+
+            try
+            {
+                var _resultado = _searchMunicipioAplication.GetId(id);
                 return StatusCode(StatusCodes.Status200OK, _resultado);
             }
             catch (TecnicalException ex)

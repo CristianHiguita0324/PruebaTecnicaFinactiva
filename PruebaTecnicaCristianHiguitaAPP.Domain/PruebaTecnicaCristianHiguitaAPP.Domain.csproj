@@ -10,12 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MunicipioDomain\Search\" />
-    <Folder Include="MunicipioDomain\New\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
   </ItemGroup>
 
 </Project>

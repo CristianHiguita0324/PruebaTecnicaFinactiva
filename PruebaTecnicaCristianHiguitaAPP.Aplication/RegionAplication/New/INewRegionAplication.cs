@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PruebaTecnicaCristianHiguitaAPP.Cross.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,6 @@ namespace PruebaTecnicaCristianHiguitaAPP.Aplication.RegionAplication.New
 {
    public interface INewRegionAplication
     {
-        string execute(string request);
+        ResponseService execute(string request);
     }
 }

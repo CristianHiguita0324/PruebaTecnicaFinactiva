@@ -12,9 +12,4 @@
     <ProjectReference Include="..\PruebaTecnicaCristianHiguitaAPP.Domain\PruebaTecnicaCristianHiguitaAPP.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MunicipioAplication\Search\" />
-    <Folder Include="MunicipioAplication\New\" />
-  </ItemGroup>
-
 </Project>

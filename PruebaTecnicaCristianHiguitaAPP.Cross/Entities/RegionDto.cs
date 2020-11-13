@@ -14,6 +14,6 @@ namespace PruebaTecnicaCristianHiguitaAPP.Cross.Entities
         [StringLength(60)]
         public string NombreRegion { get; set; }
 
-        public List<MunicipioRegion> Municipios { get; set; }
+       
     }
 }

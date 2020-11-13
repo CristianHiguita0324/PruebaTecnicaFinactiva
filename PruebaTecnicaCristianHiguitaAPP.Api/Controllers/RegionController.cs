@@ -102,13 +102,42 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
 
             try
             {
-                var _resultado = _searchRegionAplication.execute();
+                var _resultado = _searchRegionAplication.GetAll();
                 return StatusCode(StatusCodes.Status200OK, _resultado);
             }
             catch (TecnicalException ex)
             {
                 return StatusCode(StatusCodes.Status200OK, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
             }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Get")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(504)]
+        public IActionResult Get(int id)
+        {
+
+            try
+            {
+                var _resultado = _searchRegionAplication.GetId(id);
+                return StatusCode(StatusCodes.Status200OK, _resultado);
+            }
+            catch (TecnicalException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, CreateResponseService.execute(StatusCodes.Status500InternalServerError.ToString(), ex.Message.ToString(), string.Empty));
+            }
+
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
@@ -127,7 +156,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Api.Controllers
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         [ProducesResponseType(504)]
-        public IActionResult Update([FromBody] RegionDto Request)
+        public IActionResult Update([FromBody] RegionDetails Request)
         {
 
             try
