@@ -23,7 +23,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Update
             }
             _unitOfWork.MunicipioRepository.Update(createEntiti(municipioDto));
             _unitOfWork.Save();
-            return null;
+            return new MunicipioDto();
             //throw new NotImplementedException();
         }
 

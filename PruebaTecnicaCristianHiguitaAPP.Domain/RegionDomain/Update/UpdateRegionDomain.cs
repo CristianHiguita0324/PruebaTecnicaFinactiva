@@ -5,6 +5,7 @@ using PruebaTecnicaCristianHiguitaAPP.Data.UnitOfWork;
 using PruebaTecnicaCristianHiguitaAPP.Domain.MunicipioDomain.Delete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
@@ -49,8 +50,10 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
                 else
                 {
                   var a =  _unitOfWork.MunicipioRepository.GetByID(item.IdMunicipio);
+                    var b = _unitOfWork.RegionMunicipioRepository.Get(x => x.IdMunicipio.Equals(item.IdMunicipio) && x.Idregion.Equals(idRegion)).FirstOrDefault() ;
+                    
                     _unitOfWork.Save();
-                    if (a!=null && a.Estado)
+                    if ((b==null || b.IdRegionMunicipio < 1) && a!=null && a.Estado)
                     {
                         _unitOfWork.RegionMunicipioRepository.Insert(CreateRelation(item.IdMunicipio, idRegion));
                         _unitOfWork.Save();
@@ -63,7 +66,7 @@ namespace PruebaTecnicaCristianHiguitaAPP.Domain.RegionDomain.Update
                 }
             }
 
-            return CreateResponseService.execute(Constant.CODIGO_EXITO, check ? Constant.MUNICIPIO_iNACTIVO: Constant.TRANSACCION_EXITOSA, new RegionDto());
+            return CreateResponseService.execute(check ?Constant.CODIGO_FALLO: Constant.CODIGO_EXITO, check ? Constant.MUNICIPIO_iNACTIVO: Constant.TRANSACCION_EXITOSA, new RegionDto());
 
 
         }
